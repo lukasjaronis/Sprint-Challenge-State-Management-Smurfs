@@ -2,7 +2,9 @@ import  {
 FETCH_POSTS,
 FETCH_POSTS_SUCCESS,
 FETCH_POSTS_FAIL,
-ADD_POST, 
+ADD_POST,
+ADD_POST_SUCCESS,
+ADD_POST_FAIL, 
 }from '../actions/index.js';
 
 
@@ -36,10 +38,17 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload.error
             }
 
-        case ADD_POST:
+        case ADD_POST || ADD_POST_SUCCESS:
             return {
                 ...state,
+                isFetching: true,
                 smurfs: action.payload.data
+            }
+            case ADD_POST_FAIL:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.payload.error
             }
         default:
             return state
