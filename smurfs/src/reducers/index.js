@@ -1,6 +1,6 @@
  
 import {
-    FETCH_POSTS,
+    FETCH_POST_START,
     FETCH_POSTS_SUCCESS,
     FETCH_POSTS_FAIL,
     ADD_POST,
@@ -18,7 +18,9 @@ import {
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
 
-        case FETCH_POSTS:
+
+
+        case FETCH_POST_START:
             return {
                 ...state,
                 isFetching: true

@@ -9,8 +9,10 @@ const SmurfList = props => {
     }, [])
 
     return   (
-        <div className="list-container">
-        <div className="list">{props.smurfs.map(smurf => {
+        <div>
+
+        <div>{props.smurfs.map(smurf => {
+
             return <ASmurf key={smurf.id} smurf={smurf} />
         })}
         </div> 
