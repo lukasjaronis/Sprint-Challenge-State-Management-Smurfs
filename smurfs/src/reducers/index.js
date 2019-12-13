@@ -1,17 +1,18 @@
-import  { 
-FETCH_POSTS,
-FETCH_POSTS_SUCCESS,
-FETCH_POSTS_FAIL,
-ADD_POST,
-ADD_POST_SUCCESS,
-ADD_POST_FAIL, 
-}from '../actions/index.js';
+ 
+import {
+    FETCH_POSTS,
+    FETCH_POSTS_SUCCESS,
+    FETCH_POSTS_FAIL,
+    ADD_POST,
+    ADD_POST_SUCCESS,
+    ADD_POST_FAIL, 
+   
+  } from '../actions';
 
-
-const initialState = {
+  const initialState = {
     smurfs: [],
     isFetching: false,
-    error: ''
+    error: ""
 }
 
 export const reducer = (state = initialState, action) => {
@@ -41,9 +42,9 @@ export const reducer = (state = initialState, action) => {
         case ADD_POST || ADD_POST_SUCCESS:
             return {
                 ...state,
-                isFetching: true,
                 smurfs: action.payload.data
             }
+
             case ADD_POST_FAIL:
             return {
                 ...state,
@@ -55,4 +56,4 @@ export const reducer = (state = initialState, action) => {
     }
 } 
         
-export default reducer;
+    export default reducer; 

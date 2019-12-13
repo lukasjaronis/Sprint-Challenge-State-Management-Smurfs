@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
-import aSmurf from '../components/aSmurf';
+import ASmurf from './ASmurf';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/index';
 
 const SmurfList = props => {
-    useEffect( () => {
+    useEffect(() => {
         props.fetchPosts()
-        console.log(`SMURF LIST`, props);
     }, [])
 
     return   (
-        <div>
-            <div>{props.smurfs.map(smurf => {
-                return <aSmurf smurf={smurf} />
-            })}
-            </div> 
-        </div>
+        <div className="list-container">
+        <div className="list">{props.smurfs.map(smurf => {
+            return <ASmurf key={smurf.id} smurf={smurf} />
+        })}
+        </div> 
+    </div>
     )
 }
 

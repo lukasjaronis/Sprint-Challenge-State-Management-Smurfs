@@ -20,48 +20,39 @@ const useStyles = makeStyles(theme => ({
 
 const SmurfForm = props => {
     const classes = useStyles();
-    const [smurf, setSmurf] = useState({
-        name: '',
-        age: '',
-        height: ''
+
+    const [smurf, setSmurf] = useState(
+    {   name: "",
+        age: "",
+        height: ""
+
     });
 
-    const handleSubmit = event => {
-        event.preventDefault();
-        props.addPost(name)
-        console.log(` SMURF USER `, smurf) 
-    };
+    const handleSubmit = e => {
+      e.preventDefault();
+      props.addPost(smurf)
+      
+     
+  }
 
-    const handleChanges = event => {
-        let name = event.target.name;
-
-        setSmurf({ ...smurf, [name]: event.target.value})
+    const handleChanges = e => {
+        setSmurf({...smurf, [e.target.name]: e.target.value});
     };
 
 
     return (
         <div>
         <form className={classes.root} noValidate autoComplete="off">
-        <TextField id="outlined-basic" name="name" value={props.name} onChange={handleChanges} label="Name" variant="outlined" />
-        <TextField id="outlined-basic" name="age" value={props.age} onChange={handleChanges} label="Age" variant="outlined" />
-        <TextField id="outlined-basic" name="height" value={props.height} onChange={handleChanges} label="Height" variant="outlined" />
-        {!props.smurfs && !props.isFetching && <Button type="submit" color="primary" onClick={handleSubmit}>Submit</Button>}
+        <TextField id="outlined-basic" type="text"  name='name' value={props.name} onChange={handleChanges} label="Name" variant="outlined" />
+        <TextField id="outlined-basic" type="text"    name='age' value={props.age} onChange={handleChanges} label="Age" variant="outlined" />
+        <TextField id="outlined-basic" type="text"    name='height' value={props.height} onChange={handleChanges} label="Height" variant="outlined" />
+        <Button type="submit" color="primary" onClick={handleSubmit}>Submit</Button>
 
-        {props.isFetching && (
-            <p>Load</p>
-        )}
 
       </form>
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        smurfs: state.smurfs,
-        isFetching: state.isFetching,
-        error: state.error
-    };
-  };
 
-export default connect(mapStateToProps, { addPost }) (SmurfForm);
+export default connect(null, { addPost })(SmurfForm); 

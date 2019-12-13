@@ -7,29 +7,22 @@ export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAIL = 'ADD_POST_FAIL';
 
 
-// fetching posts
 export const fetchPosts = () => (dispatch) => {
-    dispatch ({type: FETCH_POSTS });
+    dispatch({ type: FETCH_POSTS });
     axios
-    .get('http://localhost:3333/smurfs')
-    .then (response => {
-        console.log('action', response)
-        dispatch ({ type: FETCH_POSTS_SUCCESS, payload: response });
-    })
-    .catch(error => 
-        dispatch ({ type: FETCH_POSTS_FAIL, payload: error.response })
-        )
-};
-
-// adding posts
-
-export const addPost = (post) => (dispatch) => {
-    axios
-    .post('http://localhost:3333/smurfs', post)
-    .then(response => {
-        dispatch ({ type: ADD_POST_SUCCESS, payload: response });
-    })
-    .catch(error => 
-        dispatch ({ type: ADD_POST_FAIL, payload: error.response })
-        )
-};
+      .get('http://localhost:3333/smurfs')
+      .then(res => { console.log(`ACTION INDEX`,res)
+      dispatch({ type: FETCH_POSTS_SUCCESS, payload: res})
+      })
+      .catch(err => console.log(err))
+  };
+  
+  export const addPost = (post) => (dispatch) => {
+    axios 
+      .post('http://localhost:3333/smurfs', post)
+      .then (res => {
+        dispatch({ 
+          type: ADD_POST, payload: res});
+      })
+      .catch(err => console.log(err))
+    }
