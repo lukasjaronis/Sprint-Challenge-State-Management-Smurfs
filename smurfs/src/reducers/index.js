@@ -1,3 +1,9 @@
+import  { 
+FETCH_POSTS,
+FETCH_POSTS_SUCCESS,
+FETCH_POSTS_FAIL,
+ADD_POST, 
+}from '../actions/index.js';
 
 
 const initialState = {
