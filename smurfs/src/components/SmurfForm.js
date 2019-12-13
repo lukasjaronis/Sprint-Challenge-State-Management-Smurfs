@@ -48,11 +48,11 @@ const SmurfForm = props => {
         <TextField id="outlined-basic" type="text"  name='name' value={props.name} onChange={handleChanges} label="Name" variant="outlined" />
         <TextField id="outlined-basic" type="text"    name='age' value={props.age} onChange={handleChanges} label="Age" variant="outlined" />
         <TextField id="outlined-basic" type="text"    name='height' value={props.height} onChange={handleChanges} label="Height" variant="outlined" />
-    
-        {!props.smurfs && !props.isFetching && <p>Search an image!</p>}
-
+  
         {props.isFetching && (
-          <Loader type="Puff" color="#c38d9e" height={300} width={300} />
+          <div><p>Loading...</p></div>
+          
+          // <Loader type="Puff" color="#c38d9e" height={300} width={300} />
         )}
 
         <Button type="submit" color="primary" onClick={handleSubmit}>Submit</Button>
