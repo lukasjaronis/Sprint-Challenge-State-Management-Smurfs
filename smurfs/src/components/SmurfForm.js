@@ -46,6 +46,12 @@ const SmurfForm = props => {
         <TextField id="outlined-basic" type="text"  name='name' value={props.name} onChange={handleChanges} label="Name" variant="outlined" />
         <TextField id="outlined-basic" type="text"    name='age' value={props.age} onChange={handleChanges} label="Age" variant="outlined" />
         <TextField id="outlined-basic" type="text"    name='height' value={props.height} onChange={handleChanges} label="Height" variant="outlined" />
+        {!props.smurfs && !props.isFetching && <p>Add a smurf!</p>}
+
+        {props.isFetching && (
+          <h1>Loading...</h1>
+        )}
+
         <Button type="submit" color="primary" onClick={handleSubmit}>Submit</Button>
 
 
@@ -54,5 +60,13 @@ const SmurfForm = props => {
     )
 }
 
+const mapStateToProps = state => {
+  return {
+    smurfs: state.smurfs,
+    isFetching: state.isFetching,
+    error: state.error
+  };
+};
 
-export default connect(null, { addPost })(SmurfForm); 
+
+export default connect(mapStateToProps, { addPost })(SmurfForm); 

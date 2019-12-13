@@ -6,7 +6,7 @@ export const ADD_POST = 'ADD_POST';
 export const ADD_POST_SUCCESS = 'ADD_POST_SUCCESS';
 export const ADD_POST_FAIL = 'ADD_POST_FAIL';
 
-
+// fetching
 export const fetchPosts = () => (dispatch) => {
     dispatch({ type: FETCH_POSTS });
     axios
@@ -14,9 +14,12 @@ export const fetchPosts = () => (dispatch) => {
       .then(res => { console.log(`ACTION INDEX`,res)
       dispatch({ type: FETCH_POSTS_SUCCESS, payload: res})
       })
-      .catch(err => console.log(err))
+      .catch(error => 
+        dispatch({type: FETCH_POSTS_FAIL, payload: error.response})
+        )
   };
   
+  // adding
   export const addPost = (post) => (dispatch) => {
     axios 
       .post('http://localhost:3333/smurfs', post)
@@ -24,5 +27,7 @@ export const fetchPosts = () => (dispatch) => {
         dispatch({ 
           type: ADD_POST, payload: res});
       })
-      .catch(err => console.log(err))
+      .catch(error => 
+        dispatch({type: ADD_POST_FAIL, payload: error.response})
+        )
     }
