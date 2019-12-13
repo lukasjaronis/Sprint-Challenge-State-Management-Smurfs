@@ -31,8 +31,6 @@ const SmurfForm = props => {
     const handleSubmit = e => {
       e.preventDefault();
       props.addPost(smurf)
-      
-     
   }
 
     const handleChanges = e => {
@@ -46,11 +44,7 @@ const SmurfForm = props => {
         <TextField id="outlined-basic" type="text"  name='name' value={props.name} onChange={handleChanges} label="Name" variant="outlined" />
         <TextField id="outlined-basic" type="text"    name='age' value={props.age} onChange={handleChanges} label="Age" variant="outlined" />
         <TextField id="outlined-basic" type="text"    name='height' value={props.height} onChange={handleChanges} label="Height" variant="outlined" />
-        {!props.smurfs && !props.isFetching && <p>Add a smurf!</p>}
-
-        {props.isFetching && (
-          <h1>Loading...</h1>
-        )}
+    
 
         <Button type="submit" color="primary" onClick={handleSubmit}>Submit</Button>
 
