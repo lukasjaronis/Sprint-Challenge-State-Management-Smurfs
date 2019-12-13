@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchPosts } from '../actions/index';
 
 const SmurfList = props => {
-    useEffect(() => {
+    useEffect( () => {
         props.fetchPosts()
         console.log(`SMURF LIST`, props);
     }, [])
